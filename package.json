@@ -1,0 +1,25 @@
+{
+  "name": "rite",
+  "displayName": "Rite Language",
+  "description": "Ceremony YAML diagnostics, hover, and completion for the Rite DSL",
+  "version": "0.0.1",
+  "publisher": "rite-ly",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rite-ly/rite-vscode.git"
+  },
+  "homepage": "https://ritely.io",
+  "keywords": ["rite", "yaml", "lsp", "language-server", "dsl"],
+  "engines": { "vscode": "^1.82.0" },
+  "categories": ["Linters", "Programming Languages"],
+  "activationEvents": ["onLanguage:yaml"],
+  "main": "./extension.js",
+  "files": [
+    "extension.js",
+    "bin/"
+  ],
+  "dependencies": {
+    "vscode-languageclient": "^9.0.0"
+  }
+}
