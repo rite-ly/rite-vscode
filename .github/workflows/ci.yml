@@ -17,8 +17,8 @@ jobs:
         target: [darwin-arm64, darwin-x64, linux-x64, linux-arm64]
 
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
           node-version-file: package.json
           cache: npm
@@ -26,7 +26,7 @@ jobs:
       - name: Remove other platform binaries
         run: find bin -maxdepth 1 -mindepth 1 -type d ! -name "${{ matrix.target }}" -exec rm -rf {} +
       - run: npx @vscode/vsce package --no-dependencies --target ${{ matrix.target }}
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
         with:
           name: rite-${{ matrix.target }}
           path: "*.vsix"
