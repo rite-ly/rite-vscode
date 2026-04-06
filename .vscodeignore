@@ -1,5 +1,6 @@
-.vscode/
-.github/
-.gitattributes
-.gitignore
-*.vsix
+**
+!dist/extension.js
+!package.json
+!README.md
+!LICENSE
+!bin/**

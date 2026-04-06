@@ -11,10 +11,16 @@
   },
   "homepage": "https://ritely.io",
   "keywords": ["rite", "yaml", "lsp", "language-server", "dsl"],
-  "engines": { "vscode": "^1.82.0" },
+  "engines": { "vscode": "^1.114.0" },
   "categories": ["Linters", "Programming Languages"],
   "activationEvents": ["onLanguage:yaml"],
-  "main": "./extension.js",
+  "main": "./dist/extension.js",
+  "scripts": {
+    "vscode:prepublish": "esbuild extension.js --bundle --outfile=dist/extension.js --external:vscode --platform=node --target=node22 --minify"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
+  },
   "dependencies": {
     "vscode-languageclient": "^9.0.0"
   }

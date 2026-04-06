@@ -10,8 +10,13 @@ on:
 
 jobs:
   package:
-    name: Package
+    name: Package (${{ matrix.target }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [darwin-arm64, darwin-x64, linux-x64, linux-arm64]
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,13 +24,11 @@ jobs:
           node-version: lts/*
           cache: npm
       - run: npm ci
-      - run: |
-          npx @vscode/vsce package --target darwin-arm64
-          npx @vscode/vsce package --target darwin-x64
-          npx @vscode/vsce package --target linux-x64
-          npx @vscode/vsce package --target linux-arm64
+      - name: Remove other platform binaries
+        run: find bin -maxdepth 1 -mindepth 1 -type d ! -name "${{ matrix.target }}" -exec rm -rf {} +
+      - run: npx @vscode/vsce package --no-dependencies --target ${{ matrix.target }}
       - uses: actions/upload-artifact@v4
         with:
-          name: vsix-packages
+          name: rite-${{ matrix.target }}
           path: "*.vsix"
           retention-days: 3

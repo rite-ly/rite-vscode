@@ -3,6 +3,8 @@ const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
 
+const BINARY_NAME = 'rite-ls';
+
 let client;
 
 function activate(context) {
@@ -15,29 +17,28 @@ function activate(context) {
             context.extensionPath,
             'bin',
             `${process.platform}-${process.arch}`,
-            'rite-ls'
+            BINARY_NAME
         );
 
         if (fs.existsSync(bundled)) {
             try {
-                fs.chmodSync(bundled, 0o755);
+                fs.accessSync(bundled, fs.constants.X_OK);
             } catch (_) {
-                // Ignore on file systems without POSIX permission support.
+                // Binary was committed without execute permission; set it now.
+                fs.chmodSync(bundled, 0o755);
             }
             command = bundled;
         } else {
             vscode.window.showWarningMessage(
-                'Rite: no bundled binary found for this platform ' +
-                `(${process.platform}-${process.arch}). ` +
-                'Falling back to rite-ls on PATH. ' +
-                'Set RITE_LS_PATH to point to the binary if this fails.'
+                `Rite: no bundled binary for ${process.platform}-${process.arch}. ` +
+                `Falling back to ${BINARY_NAME} on PATH — set RITE_LS_PATH if it is not installed.`
             );
-            command = 'rite-ls';
+            command = BINARY_NAME;
         }
     }
 
     client = new LanguageClient(
-        'rite-ls',
+        BINARY_NAME,
         'Rite Language Server',
         { command, transport: TransportKind.stdio },
         { documentSelector: [{ scheme: 'file', language: 'yaml' }] }
