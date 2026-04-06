@@ -11,7 +11,7 @@
   },
   "homepage": "https://ritely.io",
   "keywords": ["rite", "yaml", "lsp", "language-server", "dsl"],
-  "engines": { "vscode": "^1.114.0" },
+  "engines": { "vscode": "^1.114.0", "node": ">=22" },
   "categories": ["Linters", "Programming Languages"],
   "activationEvents": ["onLanguage:yaml"],
   "main": "./dist/extension.js",

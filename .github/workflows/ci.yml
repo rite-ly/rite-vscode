@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-# Windows is not supported by the Rite language server at this time.
-
 jobs:
   package:
     name: Package (${{ matrix.target }})
@@ -15,19 +13,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # Windows is not supported by the Rite language server at this time.
         target: [darwin-arm64, darwin-x64, linux-x64, linux-arm64]
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: lts/*
+          node-version-file: package.json
           cache: npm
       - run: npm ci
       - name: Remove other platform binaries
         run: find bin -maxdepth 1 -mindepth 1 -type d ! -name "${{ matrix.target }}" -exec rm -rf {} +
       - run: npx @vscode/vsce package --no-dependencies --target ${{ matrix.target }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: rite-${{ matrix.target }}
           path: "*.vsix"
