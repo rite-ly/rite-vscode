@@ -19,7 +19,7 @@
     "vscode:prepublish": "esbuild extension.js --bundle --outfile=dist/extension.js --external:vscode --platform=node --target=node22 --minify"
   },
   "devDependencies": {
-    "esbuild": "^0.28.0"
+    "esbuild": "0.28.0"
   },
   "dependencies": {
     "vscode-languageclient": "^9.0.0"
