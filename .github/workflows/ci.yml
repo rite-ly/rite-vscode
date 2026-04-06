@@ -19,7 +19,11 @@ jobs:
           node-version: lts/*
           cache: npm
       - run: npm ci
-      - run: npx @vscode/vsce package --target darwin-arm64 --target darwin-x64 --target linux-x64 --target linux-arm64
+      - run: |
+          npx @vscode/vsce package --target darwin-arm64
+          npx @vscode/vsce package --target darwin-x64
+          npx @vscode/vsce package --target linux-x64
+          npx @vscode/vsce package --target linux-arm64
       - uses: actions/upload-artifact@v4
         with:
           name: vsix-packages

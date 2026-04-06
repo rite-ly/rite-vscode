@@ -15,10 +15,6 @@
   "categories": ["Linters", "Programming Languages"],
   "activationEvents": ["onLanguage:yaml"],
   "main": "./extension.js",
-  "files": [
-    "extension.js",
-    "bin/"
-  ],
   "dependencies": {
     "vscode-languageclient": "^9.0.0"
   }
