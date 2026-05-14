@@ -11,6 +11,7 @@
   },
   "homepage": "https://ritely.io",
   "icon": "images/icon.png",
+  "preview": true,
   "keywords": ["rite", "ceremony", "security", "LSP"],
   "engines": {
     "vscode": "^1.114.0",
