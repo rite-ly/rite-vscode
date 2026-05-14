@@ -7,43 +7,63 @@ const BINARY_NAME = process.platform === 'win32' ? 'rite-ls.exe' : 'rite-ls';
 
 let client;
 
-function activate(context) {
-    let command;
-
-    if (process.env.RITE_LS_PATH) {
-        command = process.env.RITE_LS_PATH;
-    } else {
-        const bundled = path.join(
-            context.extensionPath,
-            'bin',
-            `${process.platform}-${process.arch}`,
-            BINARY_NAME
-        );
-
-        if (fs.existsSync(bundled)) {
-            try {
-                fs.accessSync(bundled, fs.constants.X_OK);
-            } catch (_) {
-                // Binary was committed without execute permission; set it now.
-                fs.chmodSync(bundled, 0o755);
-            }
-            command = bundled;
-        } else {
-            vscode.window.showWarningMessage(
-                `Rite: no bundled binary for ${process.platform}-${process.arch}. ` +
-                `Falling back to ${BINARY_NAME} on PATH — set RITE_LS_PATH if it is not installed.`
-            );
-            command = BINARY_NAME;
-        }
+function resolveCommand(context) {
+    const configured = vscode.workspace.getConfiguration('rite').get('server.path');
+    if (configured) {
+        return configured;
     }
 
+    const bundled = path.join(
+        context.extensionPath,
+        'bin',
+        `${process.platform}-${process.arch}`,
+        BINARY_NAME
+    );
+
+    if (fs.existsSync(bundled)) {
+        try {
+            fs.accessSync(bundled, fs.constants.X_OK);
+        } catch (_) {
+            // Binary was committed without execute permission; set it now.
+            fs.chmodSync(bundled, 0o755);
+        }
+        return bundled;
+    }
+
+    vscode.window.showWarningMessage(
+        `Rite: no bundled binary for ${process.platform}-${process.arch}. ` +
+        `Falling back to ${BINARY_NAME} on PATH, set rite.server.path if it is not installed.`
+    );
+    return BINARY_NAME;
+}
+
+function startClient(context) {
+    const command = resolveCommand(context);
     client = new LanguageClient(
-        BINARY_NAME,
+        'rite',
         'Rite Language Server',
         { command, transport: TransportKind.stdio },
         { documentSelector: [{ scheme: 'file', language: 'yaml', pattern: '**/*.rite.yaml' }] }
     );
     client.start();
+}
+
+async function restart(context) {
+    await client?.stop();
+    startClient(context);
+}
+
+function activate(context) {
+    startClient(context);
+
+    context.subscriptions.push(
+        vscode.workspace.onDidChangeConfiguration((event) => {
+            if (event.affectsConfiguration('rite.server.path')) {
+                restart(context);
+            }
+        }),
+        vscode.commands.registerCommand('rite.restartServer', () => restart(context))
+    );
 }
 
 function deactivate() {

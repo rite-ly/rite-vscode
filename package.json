@@ -20,6 +20,31 @@
   "categories": ["Linters", "Programming Languages"],
   "activationEvents": ["workspaceContains:**/*.rite.yaml"],
   "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Rite",
+      "properties": {
+        "rite.server.path": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to a custom rite-ls binary. Leave empty to use the bundled binary."
+        },
+        "rite.trace.server": {
+          "type": "string",
+          "enum": ["off", "messages", "verbose"],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the Rite language server."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "rite.restartServer",
+        "title": "Restart Language Server",
+        "category": "Rite"
+      }
+    ]
+  },
   "scripts": {
     "vscode:prepublish": "esbuild extension.js --bundle --outfile=dist/extension.js --external:vscode --platform=node --target=node22 --minify"
   },

@@ -1,14 +1,14 @@
 # Rite Language Server
 
-> **Alpha release** — this extension is in early development. Expect rough edges and breaking changes.
-
-VS Code extension providing language support for `.rite.yaml` ceremony files.
+Language support for `.rite.yaml` ceremony files from the [Rite](https://github.com/rite-ly/rite) project.
 
 ## Features
 
 - Diagnostics (errors and warnings)
 - Hover information
 - Completions
+
+The language server attaches only to `*.rite.yaml` files, so unrelated YAML documents are untouched.
 
 ## Requirements
 
@@ -18,17 +18,16 @@ The extension ships with a bundled `rite-ls` binary for the following platforms:
 - Linux (x64 and ARM64)
 - Windows (x64)
 
-No installation required on supported platforms, the binary is included in the extension.
+## Settings
 
-## Configuration
+| Setting | Description |
+|---|---|
+| `rite.server.path` | Absolute path to a custom `rite-ls` binary. Leave empty to use the bundled one. |
+| `rite.trace.server` | Log LSP traffic to the **Rite Language Server** output channel (`off` / `messages` / `verbose`). |
 
-To use a custom or locally built `rite-ls` binary, set the `RITE_LS_PATH` environment variable to its path before launching VS Code.
+Changes to `rite.server.path` restart the language server automatically; no window reload required.
 
-## Development
-
-Clone the repository and open it in VS Code. Press **F5** to launch an Extension Development Host with the plugin loaded.
-
-Set `RITE_LS_PATH` in your environment (or in `.vscode/launch.json` under `env`) to point to a local build of `rite-ls`.
+Need to restart the server manually? Run **Rite: Restart Language Server** from the Command Palette.
 
 ## License
 
