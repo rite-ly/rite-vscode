@@ -17,7 +17,7 @@
     "node": ">=22"
   },
   "categories": ["Linters", "Programming Languages"],
-  "activationEvents": ["onLanguage:yaml"],
+  "activationEvents": ["workspaceContains:**/*.rite.yaml"],
   "main": "./dist/extension.js",
   "scripts": {
     "vscode:prepublish": "esbuild extension.js --bundle --outfile=dist/extension.js --external:vscode --platform=node --target=node22 --minify"

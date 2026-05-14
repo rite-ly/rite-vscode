@@ -41,7 +41,7 @@ function activate(context) {
         BINARY_NAME,
         'Rite Language Server',
         { command, transport: TransportKind.stdio },
-        { documentSelector: [{ scheme: 'file', language: 'yaml' }] }
+        { documentSelector: [{ scheme: 'file', language: 'yaml', pattern: '**/*.rite.yaml' }] }
     );
     client.start();
 }
