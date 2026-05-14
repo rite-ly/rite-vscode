@@ -10,8 +10,11 @@
     "url": "https://github.com/rite-ly/rite-vscode.git"
   },
   "homepage": "https://ritely.io",
-  "keywords": ["rite", "yaml", "lsp", "language-server", "dsl"],
-  "engines": { "vscode": "^1.114.0", "node": ">=22" },
+  "keywords": ["rite", "ceremony", "security", "LSP"],
+  "engines": {
+    "vscode": "^1.114.0",
+    "node": ">=22"
+  },
   "categories": ["Linters", "Programming Languages"],
   "activationEvents": ["onLanguage:yaml"],
   "main": "./dist/extension.js",
@@ -23,5 +26,6 @@
   },
   "dependencies": {
     "vscode-languageclient": "^9.0.0"
-  }
+  },
+  "riteLsVersion": "0.1.0-rc.8"
 }

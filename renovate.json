@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["^package\\.json$"],
+      "matchStrings": ["\"riteLsVersion\":\\s*\"(?<currentValue>[^\"]+)\""],
+      "depNameTemplate": "rite-ls",
+      "packageNameTemplate": "rite-ly/rite",
+      "datasourceTemplate": "github-releases",
+      "autoReplaceStringTemplate": "\"riteLsVersion\": \"{{{newValue}}}\""
+    }
+  ],
+  "postUpgradeTasks": {
+    "commands": ["scripts/download-rite-ls.sh {{{newVersion}}}"],
+    "fileFilters": ["bin/**"],
+    "executionMode": "branch"
+  }
+}

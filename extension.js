@@ -3,7 +3,7 @@ const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
 
-const BINARY_NAME = 'rite-ls';
+const BINARY_NAME = process.platform === 'win32' ? 'rite-ls.exe' : 'rite-ls';
 
 let client;
 

@@ -1,8 +1,8 @@
-# Rite VS Code Extension
+# Rite Language Server
 
 > **Alpha release** — this extension is in early development. Expect rough edges and breaking changes.
 
-VS Code extension providing language support for `.rite.yaml` ceremony files, powered by the `rite-ls` language server.
+VS Code extension providing language support for `.rite.yaml` ceremony files.
 
 ## Features
 
@@ -16,10 +16,9 @@ The extension ships with a bundled `rite-ls` binary for the following platforms:
 
 - macOS (Apple Silicon and Intel)
 - Linux (x64 and ARM64)
+- Windows (x64)
 
-No installation required on supported platforms — the binary is included in the extension.
-
-> Windows is not yet supported.
+No installation required on supported platforms, the binary is included in the extension.
 
 ## Configuration
 
