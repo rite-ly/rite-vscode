@@ -10,6 +10,7 @@
     "url": "https://github.com/rite-ly/rite-vscode.git"
   },
   "homepage": "https://ritely.io",
+  "icon": "images/icon.png",
   "keywords": ["rite", "ceremony", "security", "LSP"],
   "engines": {
     "vscode": "^1.114.0",
