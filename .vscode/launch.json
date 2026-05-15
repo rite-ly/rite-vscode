@@ -8,8 +8,6 @@
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ],
-            // Set RITE_LS_PATH to override the binary path (e.g. path to a local build of rite-ls).
-            // Otherwise the extension falls back to 'rite-ls' on PATH.
             "env": {}
         }
     ]
