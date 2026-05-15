@@ -3,7 +3,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["^package\\.json$"],
+      "managerFilePatterns": ["package.json"],
       "matchStrings": ["\"riteLsVersion\":\\s*\"(?<currentValue>[^\"]+)\""],
       "depNameTemplate": "rite-ls",
       "packageNameTemplate": "rite-ly/rite",
