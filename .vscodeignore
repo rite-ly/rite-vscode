@@ -2,6 +2,7 @@
 !dist/extension.js
 !package.json
 !README.md
+!CHANGELOG.md
 !LICENSE
 !bin/**
 !images/icon.png
