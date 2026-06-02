@@ -55,5 +55,5 @@
   "dependencies": {
     "vscode-languageclient": "^9.0.0"
   },
-  "riteLsVersion": "0.2.1"
+  "riteLsVersion": "0.2.2"
 }
