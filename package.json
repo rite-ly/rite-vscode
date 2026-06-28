@@ -53,7 +53,7 @@
     "esbuild": "0.28.1"
   },
   "dependencies": {
-    "vscode-languageclient": "^9.0.0"
+    "vscode-languageclient": "^10.0.0"
   },
   "riteLsVersion": "0.3.0"
 }
