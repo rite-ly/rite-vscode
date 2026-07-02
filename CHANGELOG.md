@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.1.2] - 2026-07-02
+
+### Changed
+
+- Updated the bundled `rite-ls` language server to 0.3.1.
+
 ## [0.1.1] - 2026-05-30
 
 ### Changed
