@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.1.3] - 2026-08-29
+
+### Changed
+
+- Updated the bundled `rite-ls` language server to 0.5.0. Ceremony files get diagnostics, hover, and completions for the `sign_data` and `verify_signature` steps, and a reference to an unknown namespace is now reported as an error.
+
 ## [0.1.2] - 2026-07-02
 
 ### Changed
@@ -35,5 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `rite.trace.server` setting to log LSP traffic to the **Rite Language Server** output channel.
 - **Rite: Restart Language Server** command.
 
+[0.1.3]: https://github.com/rite-ly/rite-vscode/releases/tag/v0.1.3
+[0.1.2]: https://github.com/rite-ly/rite-vscode/releases/tag/v0.1.2
 [0.1.1]: https://github.com/rite-ly/rite-vscode/releases/tag/v0.1.1
 [0.1.0]: https://github.com/rite-ly/rite-vscode/releases/tag/v0.1.0

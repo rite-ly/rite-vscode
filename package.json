@@ -2,7 +2,7 @@
   "name": "rite",
   "displayName": "Rite Language",
   "description": "Ceremony YAML diagnostics, hover, and completion for the Rite DSL",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "rite-ly",
   "license": "MIT",
   "repository": {
