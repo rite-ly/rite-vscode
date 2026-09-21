@@ -14,7 +14,7 @@ The language server attaches only to `*.rite.yaml` files, so unrelated YAML docu
 
 The extension ships with a bundled `rite-ls` binary for the following platforms:
 
-- macOS (Apple Silicon and Intel)
+- macOS (Apple Silicon; Intel macOS is not supported)
 - Linux (x64 and ARM64)
 - Windows (x64)
 
