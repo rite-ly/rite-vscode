@@ -36,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release.
 - Language support for `*.rite.yaml` ceremony files via the bundled `rite-ls` language server: diagnostics, hover information, and completions.
-- Bundled binaries for macOS (Apple Silicon and Intel), Linux (x64 and ARM64), and Windows (x64).
+- Bundled binaries for macOS (Apple Silicon), Linux (x64 and ARM64), and Windows (x64). Intel macOS is not supported.
 - `rite.server.path` setting to point at a custom `rite-ls` binary (hot-restarts the server on change).
 - `rite.trace.server` setting to log LSP traffic to the **Rite Language Server** output channel.
 - **Rite: Restart Language Server** command.

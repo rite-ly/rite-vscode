@@ -39,7 +39,6 @@ place() {
 }
 
 place "darwin-arm64"     "bin/darwin-arm64/rite-ls"
-place "darwin-amd64"     "bin/darwin-x64/rite-ls"
 place "linux-arm64"      "bin/linux-arm64/rite-ls"
 place "linux-amd64"      "bin/linux-x64/rite-ls"
 place "windows-amd64"    "bin/win32-x64/rite-ls.exe"
