@@ -11,7 +11,7 @@ permissions:
 jobs:
   validate:
     name: Validate version
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Check tag matches package.json version
@@ -26,7 +26,7 @@ jobs:
 
   verify:
     name: Verify rite-ls provenance
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: validate
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -34,7 +34,7 @@ jobs:
 
   publish:
     name: Publish (${{ matrix.target }})
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [validate, verify]
     strategy:
       # Serialised: the first target creates the marketplace version, the rest
@@ -67,7 +67,7 @@ jobs:
 
   release:
     name: Draft GitHub release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: publish
     permissions:
       contents: write
